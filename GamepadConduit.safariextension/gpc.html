@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html><head>
+<title>GamepadConduit</title>
+<meta charset="utf-8">
+<script>
+
+safari.application.addEventListener("message", function(event) {
+	console.info("Got msg from page: ", event.message);
+	event.target.page.dispatchMessage("reply", {ok:true});
+}, false);
+
+</script>
+</head><body></body></html>

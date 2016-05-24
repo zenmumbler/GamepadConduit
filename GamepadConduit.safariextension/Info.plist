@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Arthur Langereis</string>
+	<key>Builder Version</key>
+	<string>11601.6.17</string>
+	<key>CFBundleDisplayName</key>
+	<string>GamepadConduit</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.zenmumbler.gamepadconduit</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>gpc.html</string>
+	</dict>
+	<key>Companion Bundle Identifier</key>
+	<array/>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>gpc-start.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Use Gamepads in Safari!</string>
+	<key>DeveloperIdentifier</key>
+	<string>6KMJ77EJ74</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
