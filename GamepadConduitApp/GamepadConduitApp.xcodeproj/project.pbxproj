@@ -1,0 +1,502 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E57AD411D204F85009BFA61 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E57AD401D204F85009BFA61 /* IOKit.framework */; };
+		8E57AD431D20500D009BFA61 /* mac_controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD421D20500D009BFA61 /* mac_controller.m */; };
+		8E57AD471D2053F4009BFA61 /* mac_360driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD461D2053F4009BFA61 /* mac_360driver.m */; };
+		8E57AD481D21C65A009BFA61 /* mac_controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD421D20500D009BFA61 /* mac_controller.m */; };
+		8E57AD491D21C65D009BFA61 /* mac_360driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD461D2053F4009BFA61 /* mac_360driver.m */; };
+		8E70AB921D1EDB9D00D3825B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E70AB911D1EDB9D00D3825B /* AppDelegate.m */; };
+		8E70AB951D1EDB9D00D3825B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E70AB941D1EDB9D00D3825B /* main.m */; };
+		8E70AB971D1EDB9D00D3825B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E70AB961D1EDB9D00D3825B /* Assets.xcassets */; };
+		8E70AB9A1D1EDB9D00D3825B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E70AB981D1EDB9D00D3825B /* MainMenu.xib */; };
+		8E70ABA81D1EF8A100D3825B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E70ABA71D1EF8A100D3825B /* Cocoa.framework */; };
+		8E70ABAE1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E70ABAD1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m */; };
+		8E70ABB21D1EF8A100D3825B /* GPCCompanion.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E70ABA51D1EF8A100D3825B /* GPCCompanion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E70ABB01D1EF8A100D3825B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E70AB851D1EDB9D00D3825B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E70ABA41D1EF8A100D3825B;
+			remoteInfo = GPCCompanion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E70ABB61D1EF8A100D3825B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8E70ABB21D1EF8A100D3825B /* GPCCompanion.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8E57AD3F1D204EE7009BFA61 /* mac_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_controller.h; path = SDController/mac_controller.h; sourceTree = "<group>"; };
+		8E57AD401D204F85009BFA61 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		8E57AD421D20500D009BFA61 /* mac_controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mac_controller.m; path = SDController/mac_controller.m; sourceTree = "<group>"; };
+		8E57AD451D20535E009BFA61 /* mac_360driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_360driver.h; path = SDController/mac_360driver.h; sourceTree = "<group>"; };
+		8E57AD461D2053F4009BFA61 /* mac_360driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mac_360driver.m; sourceTree = "<group>"; };
+		8E70AB8D1D1EDB9D00D3825B /* GamepadConduitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamepadConduitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E70AB901D1EDB9D00D3825B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8E70AB911D1EDB9D00D3825B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8E70AB941D1EDB9D00D3825B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E70AB961D1EDB9D00D3825B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E70AB991D1EDB9D00D3825B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8E70AB9B1D1EDB9D00D3825B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E70ABA51D1EF8A100D3825B /* GPCCompanion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GPCCompanion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E70ABA71D1EF8A100D3825B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		8E70ABAB1D1EF8A100D3825B /* GPCCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPCCompanion.entitlements; sourceTree = "<group>"; };
+		8E70ABAC1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionCompanionRequestHandler.h; sourceTree = "<group>"; };
+		8E70ABAD1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionCompanionRequestHandler.m; sourceTree = "<group>"; };
+		8E70ABAF1D1EF8A100D3825B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E70ABB71D1EF90600D3825B /* GamepadConduitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GamepadConduitApp.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E70AB8A1D1EDB9D00D3825B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E70ABA21D1EF8A100D3825B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E57AD411D204F85009BFA61 /* IOKit.framework in Frameworks */,
+				8E70ABA81D1EF8A100D3825B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E57AD3E1D204E9F009BFA61 /* SDController */ = {
+			isa = PBXGroup;
+			children = (
+				8E57AD3F1D204EE7009BFA61 /* mac_controller.h */,
+				8E57AD421D20500D009BFA61 /* mac_controller.m */,
+				8E57AD451D20535E009BFA61 /* mac_360driver.h */,
+				8E57AD461D2053F4009BFA61 /* mac_360driver.m */,
+			);
+			name = SDController;
+			sourceTree = "<group>";
+		};
+		8E70AB841D1EDB9D00D3825B = {
+			isa = PBXGroup;
+			children = (
+				8E57AD3E1D204E9F009BFA61 /* SDController */,
+				8E70AB8F1D1EDB9D00D3825B /* GamepadConduitApp */,
+				8E70ABA91D1EF8A100D3825B /* GPCCompanion */,
+				8E70ABA61D1EF8A100D3825B /* Frameworks */,
+				8E70AB8E1D1EDB9D00D3825B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E70AB8E1D1EDB9D00D3825B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E70AB8D1D1EDB9D00D3825B /* GamepadConduitApp.app */,
+				8E70ABA51D1EF8A100D3825B /* GPCCompanion.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E70AB8F1D1EDB9D00D3825B /* GamepadConduitApp */ = {
+			isa = PBXGroup;
+			children = (
+				8E70ABB71D1EF90600D3825B /* GamepadConduitApp.entitlements */,
+				8E70AB901D1EDB9D00D3825B /* AppDelegate.h */,
+				8E70AB911D1EDB9D00D3825B /* AppDelegate.m */,
+				8E70AB961D1EDB9D00D3825B /* Assets.xcassets */,
+				8E70AB981D1EDB9D00D3825B /* MainMenu.xib */,
+				8E70AB9B1D1EDB9D00D3825B /* Info.plist */,
+				8E70AB931D1EDB9D00D3825B /* Supporting Files */,
+			);
+			path = GamepadConduitApp;
+			sourceTree = "<group>";
+		};
+		8E70AB931D1EDB9D00D3825B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E70AB941D1EDB9D00D3825B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E70ABA61D1EF8A100D3825B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E57AD401D204F85009BFA61 /* IOKit.framework */,
+				8E70ABA71D1EF8A100D3825B /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E70ABA91D1EF8A100D3825B /* GPCCompanion */ = {
+			isa = PBXGroup;
+			children = (
+				8E70ABAC1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.h */,
+				8E70ABAD1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m */,
+				8E70ABAF1D1EF8A100D3825B /* Info.plist */,
+				8E70ABAA1D1EF8A100D3825B /* Supporting Files */,
+			);
+			path = GPCCompanion;
+			sourceTree = "<group>";
+		};
+		8E70ABAA1D1EF8A100D3825B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E70ABAB1D1EF8A100D3825B /* GPCCompanion.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E70AB8C1D1EDB9D00D3825B /* GamepadConduitApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E70AB9E1D1EDB9D00D3825B /* Build configuration list for PBXNativeTarget "GamepadConduitApp" */;
+			buildPhases = (
+				8E70AB891D1EDB9D00D3825B /* Sources */,
+				8E70AB8A1D1EDB9D00D3825B /* Frameworks */,
+				8E70AB8B1D1EDB9D00D3825B /* Resources */,
+				8E70ABB61D1EF8A100D3825B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E70ABB11D1EF8A100D3825B /* PBXTargetDependency */,
+			);
+			name = GamepadConduitApp;
+			productName = GamepadConduitApp;
+			productReference = 8E70AB8D1D1EDB9D00D3825B /* GamepadConduitApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E70ABA41D1EF8A100D3825B /* GPCCompanion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E70ABB31D1EF8A100D3825B /* Build configuration list for PBXNativeTarget "GPCCompanion" */;
+			buildPhases = (
+				8E70ABA11D1EF8A100D3825B /* Sources */,
+				8E70ABA21D1EF8A100D3825B /* Frameworks */,
+				8E70ABA31D1EF8A100D3825B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GPCCompanion;
+			productName = GPCCompanion;
+			productReference = 8E70ABA51D1EF8A100D3825B /* GPCCompanion.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E70AB851D1EDB9D00D3825B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = xfinitegames;
+				TargetAttributes = {
+					8E70AB8C1D1EDB9D00D3825B = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6KMJ77EJ74;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					8E70ABA41D1EF8A100D3825B = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6KMJ77EJ74;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 8E70AB881D1EDB9D00D3825B /* Build configuration list for PBXProject "GamepadConduitApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E70AB841D1EDB9D00D3825B;
+			productRefGroup = 8E70AB8E1D1EDB9D00D3825B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E70AB8C1D1EDB9D00D3825B /* GamepadConduitApp */,
+				8E70ABA41D1EF8A100D3825B /* GPCCompanion */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E70AB8B1D1EDB9D00D3825B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E70AB971D1EDB9D00D3825B /* Assets.xcassets in Resources */,
+				8E70AB9A1D1EDB9D00D3825B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E70ABA31D1EF8A100D3825B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E70AB891D1EDB9D00D3825B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E70AB951D1EDB9D00D3825B /* main.m in Sources */,
+				8E57AD431D20500D009BFA61 /* mac_controller.m in Sources */,
+				8E70AB921D1EDB9D00D3825B /* AppDelegate.m in Sources */,
+				8E57AD471D2053F4009BFA61 /* mac_360driver.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E70ABA11D1EF8A100D3825B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E70ABAE1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m in Sources */,
+				8E57AD491D21C65D009BFA61 /* mac_360driver.m in Sources */,
+				8E57AD481D21C65A009BFA61 /* mac_controller.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E70ABB11D1EF8A100D3825B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E70ABA41D1EF8A100D3825B /* GPCCompanion */;
+			targetProxy = 8E70ABB01D1EF8A100D3825B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E70AB981D1EDB9D00D3825B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E70AB991D1EDB9D00D3825B /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E70AB9C1D1EDB9D00D3825B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Arthur Langereis (6KMJ77EJ74)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug;
+		};
+		8E70AB9D1D1EDB9D00D3825B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Arthur Langereis (6KMJ77EJ74)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Release;
+		};
+		8E70AB9F1D1EDB9D00D3825B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GamepadConduitApp/GamepadConduitApp.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GamepadConduitApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = net.zenmumbler.GamepadConduitApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = 6KMJ77EJ74/;
+			};
+			name = Debug;
+		};
+		8E70ABA01D1EDB9D00D3825B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GamepadConduitApp/GamepadConduitApp.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GamepadConduitApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = net.zenmumbler.GamepadConduitApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = 6KMJ77EJ74/;
+			};
+			name = Release;
+		};
+		8E70ABB41D1EF8A100D3825B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_ENTITLEMENTS = GPCCompanion/GPCCompanion.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GPCCompanion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = net.zenmumbler.GamepadConduitApp.GPCCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = 6KMJ77EJ74/;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8E70ABB51D1EF8A100D3825B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_ENTITLEMENTS = GPCCompanion/GPCCompanion.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GPCCompanion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = net.zenmumbler.GamepadConduitApp.GPCCompanion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = 6KMJ77EJ74/;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E70AB881D1EDB9D00D3825B /* Build configuration list for PBXProject "GamepadConduitApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E70AB9C1D1EDB9D00D3825B /* Debug */,
+				8E70AB9D1D1EDB9D00D3825B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E70AB9E1D1EDB9D00D3825B /* Build configuration list for PBXNativeTarget "GamepadConduitApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E70AB9F1D1EDB9D00D3825B /* Debug */,
+				8E70ABA01D1EDB9D00D3825B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E70ABB31D1EF8A100D3825B /* Build configuration list for PBXNativeTarget "GPCCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E70ABB41D1EF8A100D3825B /* Debug */,
+				8E70ABB51D1EF8A100D3825B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E70AB851D1EDB9D00D3825B /* Project object */;
+}

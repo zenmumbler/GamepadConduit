@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Arthur Langereis</string>
 	<key>Builder Version</key>
-	<string>11601.6.17</string>
+	<string>11601.7.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>GamepadConduit</string>
 	<key>CFBundleIdentifier</key>
@@ -22,7 +22,9 @@
 		<string>gpc.html</string>
 	</dict>
 	<key>Companion Bundle Identifier</key>
-	<array/>
+	<array>
+		<string>net.zenmumbler.GamepadConduitApp.GPCCompanion</string>
+	</array>
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
