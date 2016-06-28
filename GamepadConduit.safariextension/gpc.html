@@ -5,9 +5,42 @@
 <script>
 
 safari.application.addEventListener("message", function(event) {
-	console.info("Got msg from page: ", event.message);
-	event.target.page.dispatchMessage("reply", {ok:true});
+	// console.info("Got msg from extension: ", event.name, event.message);
+	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("frame processed: ", event.message);
 }, false);
+
+
+const ITERATION_COUNT = 600;
+var iterations = ITERATION_COUNT;
+
+function nextFrame() {
+	safari.extension.companion.dispatchMessage("frame " + iterations, "yay");
+	if (--iterations > 0) {
+		setTimeout(nextFrame, 16);
+	}
+	else {
+		console.info("test ended", Date.now());
+	}
+}
+
+
+safari.application.addEventListener("open", function(event) {
+	if (! (event.target instanceof SafariExtensionCompanion)) {
+		return;
+	}
+
+	setTimeout(function() {
+		console.info("starting test", Date.now());
+		nextFrame();
+	}, 5000);
+}, true);
+
+
+safari.application.addEventListener("close", function(event) {
+	if (! (event.target instanceof SafariExtensionCompanion)) {
+		return;
+	}
+}, true);
 
 </script>
 </head><body></body></html>

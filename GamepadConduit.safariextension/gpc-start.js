@@ -1,12 +1,23 @@
-// gpc-start - part of GamepadConduit - (c) 2016 by Arthur Langereis (@zenmumbler)
-var el = document.createElement("span");
-el.style.display = "none !important";
-el.dataset.stuff = [1,2,3,4];
-el.someRandomProperty = [5,6,7,8];
-document.body.appendChild(el);
+// gpc-start - part of GamepadConduit
+// (c) 2016 by Arthur Langereis (@zenmumbler)
 
-safari.self.addEventListener("message", function(event) {
-	console.info("Got msg from global: ", event.message);
-}, false);
+if (document.contentType == "text/html") {
 
-console.info("gpc is go, apes.");
+	// -- add data communications element
+	var commsElem = document.createElement("meta");
+	commsElem.name = "GPCData";
+	commsElem.setAttribute("controllers", "[]");
+	document.head.appendChild(commsElem);
+
+	// -- inject Gamepad types and associated functions into client page
+	var scel = document.createElement("script");
+	scel.src = safari.extension.baseURI + "gpc-local.js";
+	document.head.appendChild(scel);
+
+	safari.self.addEventListener("message", function(event) {
+		console.info("Got msg from global: ", Date.now(), event);
+	}, false);
+
+
+	console.info("gpc is go, apes.", typeof safari.extension, typeof safari.application);
+}
