@@ -131,7 +131,9 @@ IOHIDManagerRef hidManager_;
 }
 
 - (ControllerDriverContext*)createController {
-	return [[ControllerDriverContext alloc] initWithController:self];
+	ControllerDriverContext* cdc = [[ControllerDriverContext alloc] initWithController:self];
+	[controllers_ addObject:cdc];
+	return cdc;
 }
 
 - (NSArray<id<ControllerDriver>>*)drivers {
