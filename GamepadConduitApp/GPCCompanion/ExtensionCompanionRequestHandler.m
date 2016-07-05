@@ -18,6 +18,10 @@
 static NSString * const messageNameKey = @"messageName";
 static NSString * const messageDataKey = @"messageData";
 
+static NSString * const pollMessage = @"poll";
+static NSString * const responseName = @"controllerdata";
+static NSString * const responseValue = @"[%d,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f]";
+
 static Controller* getController() {
 	static Controller* controller_s = NULL;
 	if (controller_s == NULL) {
@@ -31,33 +35,41 @@ static Controller* getController() {
 - (void)beginRequestWithExtensionContext:(NSExtensionContext *)context {
 	Controller* controller = getController();
 
-    NSExtensionItem *message = context.inputItems.firstObject;
-    if (!message) {
-        // Ignore requests without a message.
-        [context completeRequestReturningItems:nil completionHandler:nil];
-        return;
-    }
-    
-    NSDictionary *userInfo = message.userInfo;
-    NSString *messageName = userInfo[messageNameKey];
-    id messageData = userInfo[messageDataKey];
-    
-    NSLog(@"Companion App Extension: We got a message named: %@ with data %@", messageName, messageData);
-    
-    NSExtensionItem *response = [[NSExtensionItem alloc] init];
-    NSString *responseName = [NSString stringWithFormat:@"Response to '%@'", messageName];
-	NSString *responseValue = [NSString stringWithFormat:@"What you said: '%@'", messageName];
+	NSExtensionItem *message = context.inputItems.firstObject;
+	if (!message) {
+		// Ignore requests without a message.
+		[context completeRequestReturningItems:nil completionHandler:nil];
+		return;
+	}
 	
-    NSMutableDictionary *responseUserInfo = [NSMutableDictionary dictionary];
-    responseUserInfo[messageNameKey] = responseName;
-    if (messageData) {
-        responseUserInfo[messageDataKey] = responseValue;
-    }
-    response.userInfo = responseUserInfo;
-    
-    [context completeRequestReturningItems:@[ response ] completionHandler:^(BOOL expired) {
-        NSLog(@"Companion App Extension: Our completion handler was called");
-    }];
+	NSDictionary *userInfo = message.userInfo;
+	NSString *messageName = userInfo[messageNameKey];
+	id messageData = userInfo[messageDataKey];
+	
+	NSExtensionItem *response = [[NSExtensionItem alloc] init];
+	
+	if ([messageName isEqualToString:pollMessage]) {
+		struct ControllerState* cs = [controller state:0];
+
+		NSMutableDictionary *responseUserInfo = [NSMutableDictionary dictionary];
+		responseUserInfo[messageNameKey] = responseName;
+		if (messageData) {
+			if (cs) {
+				responseUserInfo[messageDataKey] = [NSString stringWithFormat:responseValue,
+													packedButtonsState(cs),
+													cs->leftStick.posX, cs->leftStick.posY, cs->rightStick.posX, cs->rightStick.posY,
+													cs->leftTrigger, cs->rightTrigger];
+			}
+			else {
+				responseUserInfo[messageDataKey] = [NSString stringWithFormat:responseValue, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f];
+			}
+		}
+		response.userInfo = responseUserInfo;
+	}
+	
+	[context completeRequestReturningItems:@[ response ] completionHandler:^(BOOL expired) {
+		// NSLog(@"Companion App Extension: Our completion handler was called");
+	}];
 }
 
 @end
