@@ -15,9 +15,9 @@ if (document.contentType == "text/html") {
 	document.head.appendChild(scel);
 
 	safari.self.addEventListener("message", function(event) {
-		console.info("Got msg from global: ", Date.now(), event);
+		commsElem.setAttribute("controllers", event.message);
 	}, false);
 
+	console.info("gpc is go, apes.");
 
-	console.info("gpc is go, apes.", typeof safari.extension, typeof safari.application);
 }

@@ -4,23 +4,21 @@
 <meta charset="utf-8">
 <script>
 
+var running = false;
+
 safari.application.addEventListener("message", function(event) {
 	// console.info("Got msg from extension: ", event.name, event.message);
-	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("frame processed: ", event.message);
+	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("controllerdata", event.message);
 }, false);
 
 
-const ITERATION_COUNT = 600;
-var iterations = ITERATION_COUNT;
-
 function nextFrame() {
-	safari.extension.companion.dispatchMessage("frame " + iterations, "yay");
-	if (--iterations > 0) {
-		setTimeout(nextFrame, 16);
+	if (! running) {
+		return;
 	}
-	else {
-		console.info("test ended", Date.now());
-	}
+
+	safari.extension.companion.dispatchMessage("poll", null);
+	setTimeout(nextFrame, 1000);
 }
 
 
@@ -29,10 +27,13 @@ safari.application.addEventListener("open", function(event) {
 		return;
 	}
 
+	console.info("extension comms started");
+
 	setTimeout(function() {
-		console.info("starting test", Date.now());
+		console.info("starting controller poller");
+		running = true;
 		nextFrame();
-	}, 5000);
+	}, 3000);
 }, true);
 
 
@@ -40,6 +41,10 @@ safari.application.addEventListener("close", function(event) {
 	if (! (event.target instanceof SafariExtensionCompanion)) {
 		return;
 	}
+
+	console.info("extension comms ended");
+
+	running = false;
 }, true);
 
 </script>
