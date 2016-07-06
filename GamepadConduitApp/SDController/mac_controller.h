@@ -36,7 +36,7 @@ struct ControllerState {
 };
 
 
-uint16_t packedButtonsState(struct ControllerState* const cs);
+uint32_t packedButtonsState(struct ControllerState* const cs);
 
 
 @protocol ControllerDriver <NSObject>

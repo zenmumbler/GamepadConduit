@@ -59,42 +59,34 @@ static void hidDeviceAdded(void* context, IOReturn ior, void* userRef, IOHIDDevi
 	}
 }
 
-/*
- XINPUT_GAMEPAD_DPAD_UP	    0x0001
- XINPUT_GAMEPAD_DPAD_DOWN	0x0002
- XINPUT_GAMEPAD_DPAD_LEFT	0x0004
- XINPUT_GAMEPAD_DPAD_RIGHT	0x0008
- XINPUT_GAMEPAD_START	    0x0010
- XINPUT_GAMEPAD_BACK	    0x0020
- XINPUT_GAMEPAD_LEFT_THUMB	0x0040
- XINPUT_GAMEPAD_RIGHT_THUMB	0x0080
- XINPUT_GAMEPAD_LEFT_SHOULDER	0x0100
- XINPUT_GAMEPAD_RIGHT_SHOULDER	0x0200
- XINPUT_GAMEPAD_A	0x1000
- XINPUT_GAMEPAD_B	0x2000
- XINPUT_GAMEPAD_X	0x4000
- XINPUT_GAMEPAD_Y	0x8000
- */
 
-uint16_t packedButtonsState(struct ControllerState* const cs) {
-	uint16_t buttons = 0;
-	if (cs->dPad.up.pressed) buttons |= 0x0001;
-	if (cs->dPad.down.pressed) buttons |= 0x0002;
-	if (cs->dPad.left.pressed) buttons |= 0x0004;
-	if (cs->dPad.right.pressed) buttons |= 0x0008;
+uint32_t packedButtonsState(struct ControllerState* const cs) {
+	uint32_t buttons = 0;
 	
-	if (cs->start.pressed) buttons |= 0x0010;
-	if (cs->menu.pressed) buttons |= 0x0020;
-	if (cs->leftThumb.pressed) buttons |= 0x0040;
-	if (cs->rightThumb.pressed) buttons |= 0x0080;
+	if (cs->A.pressed) buttons |= 0x0001;
+	if (cs->B.pressed) buttons |= 0x0002;
+	if (cs->X.pressed) buttons |= 0x0004;
+	if (cs->Y.pressed) buttons |= 0x0008;
 
-	if (cs->leftShoulder.pressed) buttons |= 0x0100;
-	if (cs->rightShoulder.pressed) buttons |= 0x0200;
+	if (cs->leftShoulder.pressed) buttons |= 0x0010;
+	if (cs->rightShoulder.pressed) buttons |= 0x0020;
 
-	if (cs->A.pressed) buttons |= 0x1000;
-	if (cs->B.pressed) buttons |= 0x2000;
-	if (cs->X.pressed) buttons |= 0x4000;
-	if (cs->Y.pressed) buttons |= 0x8000;
+//	if (cs->leftTrigger > 0.6f) buttons |= 0x0040;
+//	if (cs->rightTrigger > 0.6f) buttons |= 0x0080;
+
+	if (cs->select.pressed) buttons |= 0x0100;
+	if (cs->start.pressed) buttons |= 0x0200;
+
+	if (cs->leftThumb.pressed) buttons |= 0x0400;
+	if (cs->rightThumb.pressed) buttons |= 0x0800;
+
+	if (cs->dPad.up.pressed) buttons |= 0x1000;
+	if (cs->dPad.down.pressed) buttons |= 0x2000;
+	if (cs->dPad.left.pressed) buttons |= 0x4000;
+	if (cs->dPad.right.pressed) buttons |= 0x8000;
+
+	if (cs->menu.pressed) buttons |= 0x10000;
+	
 	return buttons;
 }
 
