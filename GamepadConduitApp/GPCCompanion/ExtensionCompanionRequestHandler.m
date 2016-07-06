@@ -21,6 +21,8 @@ static NSString * const messageDataKey = @"messageData";
 static NSString * const pollMessage = @"poll";
 static NSString * const responseName = @"controllerdata";
 static NSString * const responseValue = @"[%d,%.5f,%.5f,%.5f,%.5f,%.5f,%.5f]";
+static NSString * const emptyResponseValue = @"[]";
+
 
 static Controller* getController() {
 	static Controller* controller_s = NULL;
@@ -29,6 +31,7 @@ static Controller* getController() {
 	}
 	return controller_s;
 }
+
 
 @implementation ExtensionCompanionRequestHandler
 
@@ -61,7 +64,7 @@ static Controller* getController() {
 													cs->leftTrigger, cs->rightTrigger];
 			}
 			else {
-				responseUserInfo[messageDataKey] = [NSString stringWithFormat:responseValue, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f];
+				responseUserInfo[messageDataKey] = emptyResponseValue;
 			}
 		}
 		response.userInfo = responseUserInfo;
