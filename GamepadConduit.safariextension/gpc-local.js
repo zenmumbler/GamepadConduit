@@ -2,6 +2,7 @@
 
 var gamepads_s = [];
 var nextGamepadIndex_s = 0;
+var commsElem = null;
 
 
 function GamepadButtonPrototype() {
@@ -20,13 +21,11 @@ function GamepadPrototype() {
 	this.timestamp = performance.now();
 	this.mapping = "standard";
 
-	this.axes = [0,0,0, 0,0,0];
+	this.axes = [0,0,0,0];
 	this.buttons = [];
-	for (var i = 0; i < 16; ++i) {
+	for (var i = 0; i < 17; ++i) {
 		this.buttons.push(new GamepadButton());
 	}
-
-	gamepads_s.push(this);
 }
 window.Gamepad = GamepadPrototype;
 
@@ -37,7 +36,57 @@ window.GamepadEvent = GamepadEventPrototype;
 
 
 navigator.getGamepads = function() {
-	return gamepads;
+	if (commsElem === null) {
+		commsElem = document.querySelector('meta[name="GPCData"]');
+		return [];
+	}
+	else {
+		var gamepadData = JSON.parse(commsElem.getAttribute("controllers"));
+
+		if (gamepadData.length === 7) {
+			if (gamepads_s.length === 0) {
+				gamepads_s.push(new GamepadPrototype());
+			}
+			var gamepad0 = gamepads_s[0];
+			var btnState = gamepadData[0];
+			var stateMask = 1;
+
+			// map button bit states to GamepadButton fields
+			for (var btn = 0; btn < 17; ++btn) {
+				var button = gamepad0.buttons[btn];
+
+				// special case the triggers
+				if (btn === 6) {
+					button.value = gamepadData[5];
+					button.pressed = gamepadData[5] > 0.6;
+				}
+				else if (btn === 7) {
+					button.value = gamepadData[6];
+					button.pressed = gamepadData[6] > 0.6;
+				}
+				else {
+					if (btnState & stateMask) {
+						button.value = 1;
+						button.pressed = true;
+					}
+					else {
+						button.value = 0;
+						button.pressed = false;
+					}
+				}
+
+				stateMask <<= 1;
+			}
+
+			// copy left and right axes
+			gamepad0.axes[0] = gamepadData[1];
+			gamepad0.axes[1] = gamepadData[2];
+			gamepad0.axes[2] = gamepadData[3];
+			gamepad0.axes[3] = gamepadData[4];
+		}
+
+		return gamepads_s;
+	}
 };
 
 }());
