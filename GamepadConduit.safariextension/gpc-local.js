@@ -83,6 +83,7 @@ navigator.getGamepads = function() {
 			gamepad0.axes[1] = gamepadData[2];
 			gamepad0.axes[2] = gamepadData[3];
 			gamepad0.axes[3] = gamepadData[4];
+			gamepad0.timestamp = performance.now();
 		}
 
 		return gamepads_s;
