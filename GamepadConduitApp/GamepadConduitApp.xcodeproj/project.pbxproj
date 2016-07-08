@@ -50,7 +50,7 @@
 		8E57AD401D204F85009BFA61 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		8E57AD421D20500D009BFA61 /* mac_controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mac_controller.m; path = SDController/mac_controller.m; sourceTree = "<group>"; };
 		8E57AD451D20535E009BFA61 /* mac_360driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_360driver.h; path = SDController/mac_360driver.h; sourceTree = "<group>"; };
-		8E57AD461D2053F4009BFA61 /* mac_360driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mac_360driver.m; sourceTree = "<group>"; };
+		8E57AD461D2053F4009BFA61 /* mac_360driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mac_360driver.m; path = SDController/mac_360driver.m; sourceTree = "<group>"; };
 		8E70AB8D1D1EDB9D00D3825B /* GamepadConduitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamepadConduitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E70AB901D1EDB9D00D3825B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E70AB911D1EDB9D00D3825B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };

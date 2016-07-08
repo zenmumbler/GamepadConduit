@@ -127,17 +127,17 @@ IOHIDManagerRef hidManager_;
 					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
 				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
 					[NSNumber numberWithInt:kHIDUsage_GD_Joystick]
-			},
+		  },
 		  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
 					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
 				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
 					[NSNumber numberWithInt:kHIDUsage_GD_GamePad]
-			},
+		  },
 		  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
 					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
 				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
 					[NSNumber numberWithInt:kHIDUsage_GD_MultiAxisController]
-			}
+		  }
 	  ];
 	
 	IOHIDManagerSetDeviceMatchingMultiple(hidManager_, (__bridge CFArrayRef)criteria);
