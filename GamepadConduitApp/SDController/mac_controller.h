@@ -26,7 +26,7 @@ struct Stick {
 
 
 struct ControllerState {
-	uint16_t isConnected, isAnalog;
+	BOOL isConnected, isExposed;
 	struct Stick leftStick, rightStick;
 	struct DirectionalPad dPad;
 	struct ButtonState A, B, X, Y, leftShoulder, rightShoulder;
@@ -61,7 +61,6 @@ uint32_t packedButtonsState(struct ControllerState* const cs);
 @interface ControllerDriverContext : NSObject 
 - (struct ControllerState*) controller;
 @property Controller *context;
-
 -(instancetype)initWithController: (Controller*)controller;
 @end
 

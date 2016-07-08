@@ -57,7 +57,7 @@ static Controller* getController() {
 		NSMutableDictionary *responseUserInfo = [NSMutableDictionary dictionary];
 		responseUserInfo[messageNameKey] = responseName;
 		if (messageData) {
-			if (cs) {
+			if (cs && cs->isExposed) {
 				responseUserInfo[messageDataKey] = [NSString stringWithFormat:responseValue,
 													packedButtonsState(cs),
 													cs->leftStick.posX, cs->leftStick.posY, cs->rightStick.posX, cs->rightStick.posY,

@@ -24,6 +24,9 @@ static void X360ValueCallback(void* context, IOReturn ior, void* userData, IOHID
 	int usage = IOHIDElementGetUsage(element);
 	CFIndex elementValue = IOHIDValueGetIntegerValue(value);
 	
+	// any input exposes the controller
+	controller->isExposed = true;
+	
 	if (usage == 50) {
 		// Left Trigger
 		float normValue = (float)elementValue / 255.f;

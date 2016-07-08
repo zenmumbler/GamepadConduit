@@ -95,6 +95,7 @@ uint32_t packedButtonsState(struct ControllerState* const cs) {
 struct ControllerState state_ = {};
 
 -(instancetype)initWithController: (Controller*)controller {
+	self.controller->isExposed = false;
 	self.context = controller;
 	return self;
 }
