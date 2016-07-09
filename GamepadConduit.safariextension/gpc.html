@@ -18,7 +18,7 @@ console.info("Waiting for app extension.");
 function tick() {
 	if (state == STATE_IDLE) {
 		setTimeout(tick, TIMEOUT_IDLE);
-		safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("getpollstatus", null);
+		safari.application.activeBrowserWindow && safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("getpollstatus", null);
 	}
 	else if (state == STATE_RUNNING) {
 		setTimeout(tick, TIMEOUT_ACTIVE);
@@ -32,6 +32,12 @@ safari.application.addEventListener("message", function(event) {
 		if (event.message === "true") {
 			console.info("Let's Go!");
 			state = STATE_RUNNING;
+		}
+		else {
+			if (state !== STATE_IDLE) {
+				console.info("Pausing");
+				state = STATE_IDLE;
+			}
 		}
 	}
 	else if (event.name === "controllerdata") {

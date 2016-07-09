@@ -4,7 +4,9 @@ var gamepads_s = [];
 var nextGamepadIndex_s = 0;
 var commsElem = null;
 var lastGamepadDataString = "[]";
+var inactivityTimerID = -1;
 
+const TIMEOUT_INACTIVITY = 5 * 1000;
 
 function GamepadButtonPrototype() {
 	this.value = 0;
@@ -16,7 +18,7 @@ window.GamepadButton = GamepadButtonPrototype;
 function GamepadPrototype() {
 	var index = nextGamepadIndex_s++;
 
-	this.id = "Ultimate Gamepad Pro " + index;
+	this.id = "Standard Gamepad " + index;
 	this.index = index;
 	this.connected = true;
 	this.timestamp = performance.now();
@@ -36,15 +38,35 @@ function GamepadEventPrototype() {
 window.GamepadEvent = GamepadEventPrototype;
 
 
+function activityLapsed() {
+	commsElem.setAttribute("active", "false");
+	inactivityTimerID = -1;
+}
+
+
 navigator.getGamepads = function() {
+	// -- retrigger inactivityTimer every time
+	var retrigger = function() {
+		if (inactivityTimerID === -1) {
+			// reset active to true, this happens when polling resumes after a period of inactivity
+			commsElem.setAttribute("active", "true");
+		}
+		else {
+			clearTimeout(inactivityTimerID);
+		}
+		inactivityTimerID = setTimeout(activityLapsed, TIMEOUT_INACTIVITY);
+	};
+
+	// --
 	if (commsElem === null) {
 		commsElem = document.querySelector('meta[name="GPCData"]');
-		commsElem.setAttribute("active", true);
+		retrigger();
 		return [];
 	}
 	else {
-		var gamepadDataString = commsElem.getAttribute("controllers");
+		retrigger();
 
+		var gamepadDataString = commsElem.getAttribute("controllers");
 		if (gamepadDataString !== lastGamepadDataString) {
 			lastGamepadDataString = gamepadDataString;
 			var gamepadData = JSON.parse(gamepadDataString);

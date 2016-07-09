@@ -16,15 +16,14 @@ if (document.contentType == "text/html") {
 	document.head.appendChild(scel);
 
 	safari.self.addEventListener("message", function(event) {
-		if (event.name === "controllerdata") {
-			commsElem.setAttribute("controllers", event.message);
-		}
-		else if (event.name === "getpollstatus") {
-			var active = commsElem.getAttribute("active");
+		var active = commsElem.getAttribute("active");
+
+		if ((active === "false") || (event.name === "getpollstatus")) {
 			safari.self.tab.dispatchMessage("pollstatus", active);
 		}
+		else if (event.name === "controllerdata") {
+			commsElem.setAttribute("controllers", event.message);
+		}
 	}, false);
-
-	console.info("GPC is go, apes.");
 
 }
