@@ -7,6 +7,7 @@ if (document.contentType == "text/html") {
 	var commsElem = document.createElement("meta");
 	commsElem.name = "GPCData";
 	commsElem.setAttribute("controllers", "[]");
+	commsElem.setAttribute("active", "false");
 	document.head.appendChild(commsElem);
 
 	// -- inject Gamepad types and associated functions into client page
@@ -15,9 +16,15 @@ if (document.contentType == "text/html") {
 	document.head.appendChild(scel);
 
 	safari.self.addEventListener("message", function(event) {
-		commsElem.setAttribute("controllers", event.message);
+		if (event.name === "controllerdata") {
+			commsElem.setAttribute("controllers", event.message);
+		}
+		else if (event.name === "getpollstatus") {
+			var active = commsElem.getAttribute("active");
+			safari.self.tab.dispatchMessage("pollstatus", active);
+		}
 	}, false);
 
-	console.info("gpc is go, apes.");
+	console.info("GPC is go, apes.");
 
 }

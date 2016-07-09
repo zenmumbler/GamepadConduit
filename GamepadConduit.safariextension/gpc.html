@@ -4,36 +4,50 @@
 <meta charset="utf-8">
 <script>
 
-var running = false;
+const TIMEOUT_IDLE = 1000;
+const TIMEOUT_ACTIVE = 33;
+
+const STATE_WAIT_FOR_EXTENSION = 1;
+const STATE_IDLE = 2;
+const STATE_RUNNING = 3;
+
+var state = STATE_WAIT_FOR_EXTENSION;
+console.info("Waiting for app extension.");
+
+
+function tick() {
+	if (state == STATE_IDLE) {
+		setTimeout(tick, TIMEOUT_IDLE);
+		safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("getpollstatus", null);
+	}
+	else if (state == STATE_RUNNING) {
+		setTimeout(tick, TIMEOUT_ACTIVE);
+		safari.extension.companion.dispatchMessage("poll", null);
+	}
+}
+
 
 safari.application.addEventListener("message", function(event) {
-	// console.info("Got msg from extension: ", event.name, event.message);
-	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("controllerdata", event.message);
-}, false);
-
-
-function nextFrame() {
-	if (! running) {
-		return;
+	if (event.name === "pollstatus") {
+		if (event.message === "true") {
+			console.info("Let's Go!");
+			state = STATE_RUNNING;
+		}
 	}
-
-	safari.extension.companion.dispatchMessage("poll", null);
-	setTimeout(nextFrame, 33);
-}
+	else if (event.name === "controllerdata") {
+		// forward controllerdata from the companion to the active tab
+		safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("controllerdata", event.message);
+	}
+}, false);
 
 
 safari.application.addEventListener("open", function(event) {
 	if (! (event.target instanceof SafariExtensionCompanion)) {
 		return;
 	}
-
-	console.info("extension comms started");
-
-	setTimeout(function() {
-		console.info("starting controller poller");
-		running = true;
-		nextFrame();
-	}, 3000);
+	console.info("App Extension comms started, waiting for someone to start polling. (" + TIMEOUT_IDLE + "ms interval)");
+	state = STATE_IDLE;
+	tick();
 }, true);
 
 
@@ -41,10 +55,8 @@ safari.application.addEventListener("close", function(event) {
 	if (! (event.target instanceof SafariExtensionCompanion)) {
 		return;
 	}
-
-	console.info("extension comms ended");
-
-	running = false;
+	console.info("App Extension lost, waiting for reconnection.");
+	state = STATE_WAIT_FOR_EXTENSION;
 }, true);
 
 </script>
