@@ -30,11 +30,13 @@ function tick() {
 safari.application.addEventListener("message", function(event) {
 	if (event.name === "pollstatus") {
 		if (event.message === "true") {
-			console.info("Let's Go!");
-			state = STATE_RUNNING;
+			if (state !== STATE_RUNNING) {
+				console.info("Let's Go!");
+				state = STATE_RUNNING;
+			}
 		}
 		else {
-			if (state !== STATE_IDLE) {
+			if (state === STATE_RUNNING) {
 				console.info("Pausing");
 				state = STATE_IDLE;
 			}

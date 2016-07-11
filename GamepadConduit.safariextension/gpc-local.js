@@ -1,4 +1,6 @@
 (function() {
+// gpc-local - part of GamepadConduit
+// (c) 2016 by Arthur Langereis (@zenmumbler)
 
 var gamepads_s = [];
 var nextGamepadIndex_s = 0;

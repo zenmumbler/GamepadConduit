@@ -1,8 +1,7 @@
 // gpc-start - part of GamepadConduit
 // (c) 2016 by Arthur Langereis (@zenmumbler)
 
-if (document.contentType == "text/html") {
-
+if (document.contentType == "text/html" && (location.protocol == "http:" || location.protocol == "https:")) {
 	// -- add data communications element
 	var commsElem = document.createElement("meta");
 	commsElem.name = "GPCData";
@@ -26,4 +25,8 @@ if (document.contentType == "text/html") {
 		}
 	}, false);
 
+	console.info("Installed GPC in " + location.href);
+}
+else {
+	window.console && console.info("NOT installing GPC in incompatible document");
 }
