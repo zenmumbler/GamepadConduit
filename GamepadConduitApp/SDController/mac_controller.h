@@ -39,6 +39,9 @@ struct ControllerState {
 uint32_t packedButtonsState(struct ControllerState* const cs);
 
 
+// ------
+
+
 @protocol ControllerDriver <NSObject>
 - (bool) supportsDevice: (IOHIDDeviceRef)ref vendor: (int)vendorID product: (int)productID;
 - (IOHIDValueCallback) callbackForDevice: (IOHIDDeviceRef)device vendor: (int)vendorID product: (int)productID;

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E070D141D5CC26A003BF102 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E070D131D5CC26A003BF102 /* GameController.framework */; };
+		8E118B621D5CDFDB0001F1EB /* mac_MFIdriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E118B611D5CDFDB0001F1EB /* mac_MFIdriver.m */; };
+		8E118B631D5CE21B0001F1EB /* mac_MFIdriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E118B611D5CDFDB0001F1EB /* mac_MFIdriver.m */; };
 		8E57AD411D204F85009BFA61 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E57AD401D204F85009BFA61 /* IOKit.framework */; };
 		8E57AD431D20500D009BFA61 /* mac_controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD421D20500D009BFA61 /* mac_controller.m */; };
 		8E57AD471D2053F4009BFA61 /* mac_360driver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57AD461D2053F4009BFA61 /* mac_360driver.m */; };
@@ -46,6 +49,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E070D131D5CC26A003BF102 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+		8E118B601D5CDF7E0001F1EB /* mac_MFIdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_MFIdriver.h; path = SDController/mac_MFIdriver.h; sourceTree = "<group>"; };
+		8E118B611D5CDFDB0001F1EB /* mac_MFIdriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mac_MFIdriver.m; path = SDController/mac_MFIdriver.m; sourceTree = "<group>"; };
 		8E57AD3F1D204EE7009BFA61 /* mac_controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_controller.h; path = SDController/mac_controller.h; sourceTree = "<group>"; };
 		8E57AD401D204F85009BFA61 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		8E57AD421D20500D009BFA61 /* mac_controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mac_controller.m; path = SDController/mac_controller.m; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E070D141D5CC26A003BF102 /* GameController.framework in Frameworks */,
 				8E57AD411D204F85009BFA61 /* IOKit.framework in Frameworks */,
 				8E70ABA81D1EF8A100D3825B /* Cocoa.framework in Frameworks */,
 			);
@@ -94,6 +101,8 @@
 				8E57AD421D20500D009BFA61 /* mac_controller.m */,
 				8E57AD451D20535E009BFA61 /* mac_360driver.h */,
 				8E57AD461D2053F4009BFA61 /* mac_360driver.m */,
+				8E118B601D5CDF7E0001F1EB /* mac_MFIdriver.h */,
+				8E118B611D5CDFDB0001F1EB /* mac_MFIdriver.m */,
 			);
 			name = SDController;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 		8E70ABA61D1EF8A100D3825B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E070D131D5CC26A003BF102 /* GameController.framework */,
 				8E57AD401D204F85009BFA61 /* IOKit.framework */,
 				8E70ABA71D1EF8A100D3825B /* Cocoa.framework */,
 			);
@@ -276,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E118B621D5CDFDB0001F1EB /* mac_MFIdriver.m in Sources */,
 				8E70AB951D1EDB9D00D3825B /* main.m in Sources */,
 				8E57AD431D20500D009BFA61 /* mac_controller.m in Sources */,
 				8E70AB921D1EDB9D00D3825B /* AppDelegate.m in Sources */,
@@ -289,6 +300,7 @@
 			files = (
 				8E70ABAE1D1EF8A100D3825B /* ExtensionCompanionRequestHandler.m in Sources */,
 				8E57AD491D21C65D009BFA61 /* mac_360driver.m in Sources */,
+				8E118B631D5CE21B0001F1EB /* mac_MFIdriver.m in Sources */,
 				8E57AD481D21C65A009BFA61 /* mac_controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +341,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Arthur Langereis (6KMJ77EJ74)";
@@ -375,8 +389,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application: Arthur Langereis (6KMJ77EJ74)";

@@ -5,9 +5,11 @@
 
 #include "mac_controller.h"
 #include "mac_360driver.h"
+#include "mac_MFIdriver.h"
 
 #import <IOKit/hid/IOHIDLib.h>
 #import <Foundation/Foundation.h>
+#import <GameController/GameController.h>
 
 
 static void hidDeviceRemoved(void* context, IOReturn ior, void* userRef) {
@@ -114,36 +116,39 @@ NSMutableArray<ControllerDriverContext*> *controllers_;
 IOHIDManagerRef hidManager_;
 
 - (instancetype)init {
-	// -- register the controller drivers
-	controllerDrivers_ = [[NSMutableArray alloc] init];
-	[controllerDrivers_ addObject:[[X360ControllerDriver alloc] init]];
+	if (self = [super init]) {
+		// -- register the controller drivers
+		controllerDrivers_ = [[NSMutableArray alloc] init];
+		[controllerDrivers_ addObject:[[X360ControllerDriver alloc] init]];
+		[controllerDrivers_ addObject:[[MFIControllerDriver alloc] init]];
 
-	controllers_ = [[NSMutableArray alloc] init];
+		controllers_ = [[NSMutableArray alloc] init];
 
-	// -- setup the HID manager and callbacks
-	hidManager_ = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
-	
-	NSArray* criteria = @[
-		  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-					[NSNumber numberWithInt:kHIDUsage_GD_Joystick]
-		  },
-		  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-					[NSNumber numberWithInt:kHIDUsage_GD_GamePad]
-		  },
-		  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-					[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-				(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-					[NSNumber numberWithInt:kHIDUsage_GD_MultiAxisController]
-		  }
-	  ];
-	
-	IOHIDManagerSetDeviceMatchingMultiple(hidManager_, (__bridge CFArrayRef)criteria);
-	IOHIDManagerRegisterDeviceMatchingCallback(hidManager_, hidDeviceAdded, (__bridge void * _Nullable)(self));
-	IOHIDManagerScheduleWithRunLoop(hidManager_, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+		// -- setup the HID manager and callbacks
+		hidManager_ = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
+		
+		NSArray* criteria = @[
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
+						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
+						[NSNumber numberWithInt:kHIDUsage_GD_Joystick]
+			  },
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
+						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
+						[NSNumber numberWithInt:kHIDUsage_GD_GamePad]
+			  },
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
+						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
+						[NSNumber numberWithInt:kHIDUsage_GD_MultiAxisController]
+			  }
+		  ];
+		
+		IOHIDManagerSetDeviceMatchingMultiple(hidManager_, (__bridge CFArrayRef)criteria);
+		IOHIDManagerRegisterDeviceMatchingCallback(hidManager_, hidDeviceAdded, (__bridge void * _Nullable)(self));
+		IOHIDManagerScheduleWithRunLoop(hidManager_, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+	}
 
 	return self;
 }

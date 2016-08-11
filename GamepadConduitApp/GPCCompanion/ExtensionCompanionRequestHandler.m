@@ -70,7 +70,7 @@ static Controller* getController() {
 		response.userInfo = responseUserInfo;
 	}
 	
-	[context completeRequestReturningItems:@[ response ] completionHandler:^(BOOL expired) {
+	[context completeRequestReturningItems:@[response] completionHandler:^(BOOL expired) {
 		// NSLog(@"Companion App Extension: Our completion handler was called");
 	}];
 }
