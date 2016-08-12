@@ -73,7 +73,7 @@ static void MFIValueCallback(void* context, IOReturn ior, void* userData, IOHIDV
 		}
 		
 		if (button) {
-			button->pressed = elementValue > 5;
+			button->pressed = elementValue > 0;
 		}
 	}
 }
