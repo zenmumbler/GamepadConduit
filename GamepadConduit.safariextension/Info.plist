@@ -31,7 +31,11 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>gpc-start.js</string>
+				<string>gpc-afterload.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>gpc-beforeload.js</string>
 			</array>
 		</dict>
 	</dict>

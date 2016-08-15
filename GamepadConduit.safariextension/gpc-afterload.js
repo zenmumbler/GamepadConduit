@@ -1,4 +1,4 @@
-// gpc-start - part of GamepadConduit
+// gpc-afterload - part of GamepadConduit
 // (c) 2016 by Arthur Langereis (@zenmumbler)
 
 if (document.contentType == "text/html" && (location.protocol == "http:" || location.protocol == "https:")) {
