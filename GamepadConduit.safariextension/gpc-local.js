@@ -35,14 +35,19 @@ function GamepadPrototype() {
 window.Gamepad = GamepadPrototype;
 
 
-function GamepadEventPrototype() {
-}
-window.GamepadEvent = GamepadEventPrototype;
-
-
 function activityLapsed() {
 	commsElem.setAttribute("active", "false");
 	inactivityTimerID = -1;
+}
+
+
+function triggerGamepadEvent(eventName, gamepad) {
+	var event = new Event(eventName, {
+		bubbles: true,
+		cancelable: true
+	});
+	event.gamepad = gamepad;
+	window.dispatchEvent(event);
 }
 
 
@@ -75,7 +80,9 @@ navigator.getGamepads = function() {
 
 			if (gamepadData.length === 7) {
 				if (gamepads_s.length === 0) {
-					gamepads_s.push(new GamepadPrototype());
+					var newGamepad = new GamepadPrototype(); 
+					gamepads_s.push(newGamepad);
+					triggerGamepadEvent("gamepadconnected", newGamepad);
 				}
 				var gamepad0 = gamepads_s[0];
 				var btnState = gamepadData[0];
