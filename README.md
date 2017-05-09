@@ -1,0 +1,14 @@
+# GamepadConduit
+
+This was an experimental Safari plugin to provide Gamepad API support via
+a native extension. While it worked to a degree, the CPU usage of the plugin
+process was not encouraging and then Safari added Gamepad support in the
+browser itself, making the plugin a moot point.
+
+It was an interesting exercise in creating a Safari extension with native
+code and may be of interest to others wanting to make something similar.
+
+Code quality as at advanced prototype level, i.e. not great.
+
+(c) 2016 by Arthur Langereis
+LICENSE: MIT
