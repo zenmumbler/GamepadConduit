@@ -53,18 +53,18 @@ uint32_t packedButtonsState(struct ControllerState* const cs);
 
 @interface Controller : NSObject
 - (instancetype)init;
-- (unsigned)count;
 - (bool)enabled: (unsigned)index;
-- (struct ControllerState*) state: (unsigned)index;
-- (ControllerDriverContext*)createController;
-- (NSArray<id<ControllerDriver>>*)drivers;
+- (struct ControllerState*) state: (unsigned)index NS_RETURNS_INNER_POINTER;
+@property (NS_NONATOMIC_IOSONLY, readonly) unsigned int count;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) ControllerDriverContext *createController;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray<id<ControllerDriver>> *drivers;
 @end
 
 
 @interface ControllerDriverContext : NSObject 
-- (struct ControllerState*) controller;
-@property Controller *context;
 -(instancetype)initWithController: (Controller*)controller;
+@property (NS_NONATOMIC_IOSONLY, readonly) struct ControllerState *controller;
+@property Controller *context;
 @end
 
 

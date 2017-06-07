@@ -37,11 +37,11 @@ static void hidDeviceAdded(void* context, IOReturn ior, void* userRef, IOHIDDevi
 		*stop = supported;
 		return supported;
 	}];
-
+	
 	// -- open device for comms and register callbacks
 	if (foundIndex != NSNotFound) {
 		if (IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone) == kIOReturnSuccess) {
-			id<ControllerDriver> driver = [drivers objectAtIndex:foundIndex];
+			id<ControllerDriver> driver = drivers[foundIndex];
 			ControllerDriverContext *controllerCtx = [devCtx createController];
 			IOHIDValueCallback callback = [driver callbackForDevice:device vendor: vendorID product: productID];
 			
@@ -69,24 +69,24 @@ uint32_t packedButtonsState(struct ControllerState* const cs) {
 	if (cs->B.pressed) buttons |= 0x0002;
 	if (cs->X.pressed) buttons |= 0x0004;
 	if (cs->Y.pressed) buttons |= 0x0008;
-
+	
 	if (cs->leftShoulder.pressed) buttons |= 0x0010;
 	if (cs->rightShoulder.pressed) buttons |= 0x0020;
-
+	
 //	if (cs->leftTrigger > 0.6f) buttons |= 0x0040;
 //	if (cs->rightTrigger > 0.6f) buttons |= 0x0080;
-
+	
 	if (cs->select.pressed) buttons |= 0x0100;
 	if (cs->start.pressed) buttons |= 0x0200;
-
+	
 	if (cs->leftThumb.pressed) buttons |= 0x0400;
 	if (cs->rightThumb.pressed) buttons |= 0x0800;
-
+	
 	if (cs->dPad.up.pressed) buttons |= 0x1000;
 	if (cs->dPad.down.pressed) buttons |= 0x2000;
 	if (cs->dPad.left.pressed) buttons |= 0x4000;
 	if (cs->dPad.right.pressed) buttons |= 0x8000;
-
+	
 	if (cs->menu.pressed) buttons |= 0x10000;
 	
 	return buttons;
@@ -121,27 +121,21 @@ IOHIDManagerRef hidManager_;
 		controllerDrivers_ = [[NSMutableArray alloc] init];
 		[controllerDrivers_ addObject:[[X360ControllerDriver alloc] init]];
 		[controllerDrivers_ addObject:[[MFIControllerDriver alloc] init]];
-
+		
 		controllers_ = [[NSMutableArray alloc] init];
-
+		
 		// -- setup the HID manager and callbacks
 		hidManager_ = IOHIDManagerCreate(kCFAllocatorDefault, kIOHIDOptionsTypeNone);
 		
 		NSArray* criteria = @[
-			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-						[NSNumber numberWithInt:kHIDUsage_GD_Joystick]
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey): @(kHIDPage_GenericDesktop),
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey): @(kHIDUsage_GD_Joystick)
 			  },
-			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-						[NSNumber numberWithInt:kHIDUsage_GD_GamePad]
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey): @(kHIDPage_GenericDesktop),
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey): @(kHIDUsage_GD_GamePad)
 			  },
-			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey):
-						[NSNumber numberWithInt:kHIDPage_GenericDesktop],
-					(NSString*)CFSTR(kIOHIDDeviceUsageKey):
-						[NSNumber numberWithInt:kHIDUsage_GD_MultiAxisController]
+			  @{	(NSString*)CFSTR(kIOHIDDeviceUsagePageKey): @(kHIDPage_GenericDesktop),
+					(NSString*)CFSTR(kIOHIDDeviceUsageKey): @(kHIDUsage_GD_MultiAxisController)
 			  }
 		  ];
 		
@@ -149,7 +143,7 @@ IOHIDManagerRef hidManager_;
 		IOHIDManagerRegisterDeviceMatchingCallback(hidManager_, hidDeviceAdded, (__bridge void * _Nullable)(self));
 		IOHIDManagerScheduleWithRunLoop(hidManager_, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
 	}
-
+	
 	return self;
 }
 
@@ -164,7 +158,7 @@ IOHIDManagerRef hidManager_;
 - (struct ControllerState*) state:(unsigned)index {
 	if (index >= controllers_.count)
 		return NULL;
-	return [controllers_ objectAtIndex:(index)].controller;
+	return controllers_[index].controller;
 }
 
 - (ControllerDriverContext*)createController {
