@@ -10,5 +10,5 @@ code and may be of interest to others wanting to make something similar.
 
 Code quality is at prototype level, i.e. not great.
 
-(c) 2016 by Arthur Langereis<br>
+(c) 2016 by zenmumbler<br>
 LICENSE: MIT
